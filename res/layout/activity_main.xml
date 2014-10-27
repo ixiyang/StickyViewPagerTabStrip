@@ -1,0 +1,45 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.example.stickypagertabstrip"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!--
+         <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    -->
+
+
+    <!-- </FrameLayout> -->
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </android.support.v4.view.ViewPager>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fake_pager_listview_header"
+        android:layout_gravity="top"
+        android:clipChildren="false"
+        android:orientation="vertical" >
+
+        
+        <View android:id="@+id/topview"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tab_top_view_height"
+            android:background="@android:color/holo_blue_light"/>
+
+        <com.example.stickypagertabstrip.PagerSlidingTabStrip
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/pager_tab_height"
+            android:background="@drawable/background_tabs"
+            app:pstsIndicatorColor="#ff0000"
+            app:pstsShouldExpand="true"
+            app:pstsUnderlineHeight="1dp" />
+    </FrameLayout>
+
+</FrameLayout>
