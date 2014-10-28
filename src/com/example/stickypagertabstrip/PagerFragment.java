@@ -3,9 +3,12 @@ package com.example.stickypagertabstrip;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.stickypagertabstrip.MainActivity.IListFragment;
+
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +18,14 @@ import android.widget.ListView;
 import android.widget.AbsListView.OnScrollListener;
 
 
-public class PagerFragment extends Fragment{
+public class PagerFragment extends Fragment implements IListFragment{
 	
 	
 	public static interface OnScrollChanged{
 		public void onScrollChange(ListView listView,View placeHolder);
 	}
+
+	private static final String TAG = "PagerFragment";
 	
 	private int params;
 	private ListView listView;
@@ -52,9 +57,10 @@ public class PagerFragment extends Fragment{
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		Log.e(TAG, "onActivityCreated!!!!!!!!!!!!!");
 		List<String> dataList=new ArrayList<String>();
 		for(int i=0;i<50;i++){
-			dataList.add("fragment "+params);
+			dataList.add("fragment "+params+ "Item  "+i);
 		}
 		
 		ArrayAdapter<String> adapter=new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, dataList);
@@ -76,5 +82,15 @@ public class PagerFragment extends Fragment{
 				
 			}
 		});
+	}
+
+	@Override
+	public ListView getListView() {
+		return listView;
+	}
+
+	@Override
+	public View getPlaceHolderView() {
+		return placeHolder;
 	}
 }
